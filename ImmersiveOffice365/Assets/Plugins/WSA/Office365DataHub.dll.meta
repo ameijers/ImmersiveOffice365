@@ -67,7 +67,7 @@ PluginImporter:
         CPU: AnyCPU
         DontProcess: false
         PlaceholderPath: Assets/Plugins/Office365DataHub.dll
-        SDK: UWP
+        SDK: AnySDK
         ScriptingBackend: AnyScriptingBackend
   userData: 
   assetBundleName: 

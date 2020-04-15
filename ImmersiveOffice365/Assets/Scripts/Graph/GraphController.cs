@@ -26,12 +26,8 @@ public class GraphController : MonoBehaviour
     public GameObject EdgePrefab = null;
 
     private DataModel model = new DataModel();
-    private PersonEntityCollection persons = new PersonEntityCollection();
-    private PersonRelationCollection relations = new PersonRelationCollection();
 
     private Dictionary<string, Node> nodes = new Dictionary<string, Node>();
-
-    private bool error = false;
 
     private void Initialize()
     {
@@ -39,18 +35,6 @@ public class GraphController : MonoBehaviour
         fdg = new ForceDirected3D(graph, Stiffness, Repulsion, Damping);
         fdg.Threadshold = Threadshold;
         graphRenderer = new GraphRenderer(this, fdg);
-    }
-
-    private void InitializeConnection()
-    {
-        Office365DataHub.AuthenticationHelper.Instance.UseBetaAPI = false;
-        Office365DataHub.AuthenticationHelper.Instance.UserLogon = true;
-        Office365DataHub.AuthenticationHelper.Instance.RedirectUri = "https://www.appzinside.com";
-        Office365DataHub.AuthenticationHelper.Instance.Authentication = new Office365DataHub.Authentication
-        {
-            ClientId = "8924f069-832c-40c0-bcb2-95f9ab328bd7",
-            Scopes = new string[] { "User.Read", "User.Read.All", "People.Read", "People.Read.All" },
-        };   
     }
 
     public GameObject CreateNode(string id = "")
@@ -94,91 +78,12 @@ public class GraphController : MonoBehaviour
         return go;
     }
 
-    private void CreateSampleData()
-    {
-        //List<Node> nodes = new List<Node>();
-
-        //for (int i = 0; i < 50; i++)
-        //{
-        //    GameObject go = CreateNode();
-        //    NodeInformation nodeInfo = go.GetComponent<NodeInformation>();
-        //    nodes.Add(nodeInfo.node);
-        //}
-
-        //System.Random rand = new System.Random((int)Time.time);
-
-        //for (int j = 0; j < 50; j++)
-        //{
-        //    int sourceIndex = rand.Next(50);
-        //    int targetIndex = rand.Next(50);
-
-        //    if (targetIndex != sourceIndex)
-        //    {
-        //        CreateEdge(nodes[sourceIndex], nodes[targetIndex]);
-        //    }
-        //}
-
-        PersonEntity p1 = new PersonEntity { Id = "1", FullName = "Alexander" };
-        PersonEntity p2 = new PersonEntity { Id = "2", FullName = "Colin" };
-        PersonEntity p3 = new PersonEntity { Id = "3", FullName = "Owen" };
-        PersonEntity p4 = new PersonEntity { Id = "4", FullName = "Tessa" };
-        PersonEntity p5 = new PersonEntity { Id = "5", FullName = "Terry" };
-        PersonEntity p6 = new PersonEntity { Id = "6", FullName = "Micheal" };
-        PersonEntity p7 = new PersonEntity { Id = "7", FullName = "Jordy" };
-
-        model.Queue.AddToQueue("", p1);
-        model.Queue.AddToQueue(p1.Id, p2);
-        model.Queue.AddToQueue(p1.Id, p3);
-        model.Queue.AddToQueue(p1.Id, p4);
-        model.Queue.AddToQueue(p3.Id, p4);
-        model.Queue.AddToQueue(p2.Id, p3);
-        model.Queue.AddToQueue(p1.Id, p5);
-        model.Queue.AddToQueue(p5.Id, p6);
-        model.Queue.AddToQueue(p6.Id, p7);
-    }
-
     void Start()
     {
         Initialize();
-        InitializeConnection();
 
-#if UNITY_EDITOR
-        CreateSampleData();
-#endif
-
-        Office365DataHub.Services.PeopleService.Instance.GetCurrentUser(OnGetPersonCompleted);
+        model.LoadData();
     }
-
-    void OnGetPersonCompleted(PersonRequest request)
-    {
-        error = true;
-
-        if (request.expection.Error != Office365DataHub.ServiceError.NoError)
-        {
-            DebugInformation.Instance.Log(request.expection.Exception.Message);
-            DebugInformation.Instance.Log(request.expection.Exception.StackTrace);
-            DebugInformation.Instance.Log(request.expection.Exception.InnerException.Message);
-        }
-
-        model.Queue.AddToQueue("", request.person);
-
-        RelatedPeopleRequest relrequest = new RelatedPeopleRequest
-        {
-            person = request.person
-        };
-
-        Office365DataHub.Services.PeopleService.Instance.GetRelatedPeople(relrequest, OnGetRelatedPersonCompleted, OnGetRelatedPeopleCompleted);
-    }
-    void OnGetRelatedPersonCompleted(RelatedPeopleRequest request)
-    {
-        model.Queue.AddToQueue(request.person.Id, request.relatedPerson);
-    }
-
-    void OnGetRelatedPeopleCompleted(RelatedPeopleRequest request)
-    {
-
-    }
-
 
     void Update()
     {
@@ -189,21 +94,22 @@ public class GraphController : MonoBehaviour
 
     public void HandleQueue(DataQueue queue)
     {
-        string rootId;
+        BaseEntity root;
         BaseEntity refering;
         GameObject go;
 
-        if (queue.GetFromQueue(out rootId, out refering))
+        if (queue.GetFromQueue(out root, out refering))
         {
-            Node rootNode = nodes.ContainsKey(rootId) ? nodes[rootId] : null;
+            Node rootNode = nodes.ContainsKey(root.Id) ? nodes[root.Id] : null;
             Node referingNode = refering != null ? nodes.ContainsKey(refering.Id) ? nodes[refering.Id] : null : null;
 
-            if (!string.IsNullOrEmpty(rootId) && rootNode == null)
+            if (root != null && rootNode == null)
             {
-                go = CreateNode(rootId);
+                go = CreateNode(root.Id);
                 NodeInformation nodeInfo = go.GetComponent<NodeInformation>();
                 nodes[nodeInfo.node.ID] = nodeInfo.node;
                 rootNode = nodeInfo.node;
+                nodeInfo.entity = root;
             }
 
             if (refering != null && referingNode == null)
@@ -212,6 +118,7 @@ public class GraphController : MonoBehaviour
                 NodeInformation nodeInfo = go.GetComponent<NodeInformation>();
                 nodes[nodeInfo.node.ID] = nodeInfo.node;
                 referingNode = nodeInfo.node;
+                nodeInfo.entity = refering;
             }
 
             if (rootNode != null && referingNode != null)

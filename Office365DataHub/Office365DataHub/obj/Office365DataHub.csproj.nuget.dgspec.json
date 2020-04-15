@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\HL\\Office365DataHub\\Office365DataHub\\Office365DataHub.csproj": {}
+    "E:\\Github\\ImmersiveOffice365\\Office365DataHub\\Office365DataHub\\Office365DataHub.csproj": {}
   },
   "projects": {
-    "E:\\HL\\Office365DataHub\\Office365DataHub\\Office365DataHub.csproj": {
+    "E:\\Github\\ImmersiveOffice365\\Office365DataHub\\Office365DataHub\\Office365DataHub.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\HL\\Office365DataHub\\Office365DataHub\\Office365DataHub.csproj",
+        "projectUniqueName": "E:\\Github\\ImmersiveOffice365\\Office365DataHub\\Office365DataHub\\Office365DataHub.csproj",
         "projectName": "Office365DataHub",
-        "projectPath": "E:\\HL\\Office365DataHub\\Office365DataHub\\Office365DataHub.csproj",
+        "projectPath": "E:\\Github\\ImmersiveOffice365\\Office365DataHub\\Office365DataHub\\Office365DataHub.csproj",
         "packagesPath": "C:\\Users\\AlexanderMeijers\\.nuget\\packages\\",
-        "outputPath": "E:\\HL\\Office365DataHub\\Office365DataHub\\obj\\",
+        "outputPath": "E:\\Github\\ImmersiveOffice365\\Office365DataHub\\Office365DataHub\\obj\\",
         "projectStyle": "PackageReference",
         "skipContentFileWrite": true,
         "fallbackFolders": [
@@ -39,11 +39,11 @@
           "dependencies": {
             "Microsoft.Graph": {
               "target": "Package",
-              "version": "[1.21.0, )"
+              "version": "[3.2.0, )"
             },
             "Microsoft.Identity.Client": {
               "target": "Package",
-              "version": "[4.9.0, )"
+              "version": "[3.0.9, )"
             },
             "Microsoft.NETCore.UniversalWindowsPlatform": {
               "target": "Package",
