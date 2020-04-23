@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8281157663366906477}
   - component: {fileID: 8281157663366906476}
   - component: {fileID: 6451410586277323743}
-  - component: {fileID: 677388607494082115}
+  - component: {fileID: 4221871829929914740}
   m_Layer: 0
   m_Name: Person
   m_TagString: Untagged
@@ -57,6 +57,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -68,6 +69,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -106,7 +108,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShowTetherWhenManipulating: 0
---- !u!114 &677388607494082115
+--- !u!114 &4221871829929914740
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -115,7 +117,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8281157663366906478}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 71f8e21fc7a5b4340be50b3c461e3432, type: 3}
+  m_Script: {fileID: 11500000, guid: fc67a8678ff64204595056bf1c35e1a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   DistanceToAttach: 0.1
