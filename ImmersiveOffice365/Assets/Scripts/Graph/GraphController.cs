@@ -37,6 +37,22 @@ public class GraphController : MonoBehaviour
         graphRenderer = new GraphRenderer(this, fdg);
     }
 
+    public void Reload()
+    {
+        gameObject.SetActive(true);
+
+        nodes.Clear();
+
+        foreach (Transform child in gameObject.transform)
+        {
+            GameObject.Destroy(child.gameObject);
+        }
+
+        Initialize();
+
+        model.LoadData();
+    }
+
     public GameObject CreateNode(string id = "")
     {
         // Create node in graph
