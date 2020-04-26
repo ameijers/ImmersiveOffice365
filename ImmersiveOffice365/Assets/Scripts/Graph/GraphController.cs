@@ -116,7 +116,7 @@ public class GraphController : MonoBehaviour
 
         if (queue.GetFromQueue(out root, out refering))
         {
-            Node rootNode = nodes.ContainsKey(root.Id) ? nodes[root.Id] : null;
+            Node rootNode = root != null ? nodes.ContainsKey(root.Id) ? nodes[root.Id] : null : null;
             Node referingNode = refering != null ? nodes.ContainsKey(refering.Id) ? nodes[refering.Id] : null : null;
 
             if (root != null && rootNode == null)
