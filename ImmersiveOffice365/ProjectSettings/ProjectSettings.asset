@@ -605,10 +605,10 @@ PlayerSettings:
   metroPackageName: ImmersiveOffice365
   metroPackageVersion: 1.0.0.0
   metroCertificatePath: Assets/WSATestCertificate.pfx
-  metroCertificatePassword: C{ib=>?Jyxy~i
+  metroCertificatePassword: 
   metroCertificateSubject: AppzInside
   metroCertificateIssuer: AppzInside
-  metroCertificateNotAfter: 00f2cbc3772dd701
+  metroCertificateNotAfter: 804e54820239d701
   metroApplicationDescription: ImmersiveOffice365
   wsaImages: {}
   metroTileShortName: ImmersiveOffice365

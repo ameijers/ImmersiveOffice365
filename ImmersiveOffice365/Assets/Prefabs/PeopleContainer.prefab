@@ -10,8 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 7580406655905462186}
   - component: {fileID: 7580406655905462187}
+  - component: {fileID: 7910560893362523625}
   m_Layer: 0
-  m_Name: People
+  m_Name: PeopleContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -43,14 +44,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf12ee76e7e00a44a9a84256760020e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nodeList: []
   ignoreInactiveTransforms: 1
   sortType: 2
   surfaceType: 2
   orientType: 1
-  layout: 0
+  layout: 1
+  anchor: 4
   radius: 0.5
   radialRange: 180
   distance: 1
   rows: 3
+  columns: 3
   cellWidth: 0.2
   cellHeight: 0.2
+  assetVersion: 1
+--- !u!114 &7910560893362523625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7580406655905462189}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d754405191905454b9133b04e746c832, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ContextMenuPrefab: {fileID: 5074835143890316732, guid: f4d870ddac7c0974c96cdb472d74778c,
+    type: 3}

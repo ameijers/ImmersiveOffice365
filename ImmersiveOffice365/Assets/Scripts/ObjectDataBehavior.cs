@@ -1,5 +1,6 @@
 ﻿using Microsoft.MixedReality.Toolkit.Input;
 using Microsoft.MixedReality.Toolkit.Utilities;
+using TMPro;
 using UnityEngine;
 
 public class ObjectDataBehavior : MonoBehaviour, IMixedRealityPointerHandler
@@ -8,61 +9,105 @@ public class ObjectDataBehavior : MonoBehaviour, IMixedRealityPointerHandler
 
     private Transform initialCollection = null;
 
+    private bool isPartOfGraphController = false;
+
+    private GameObject objectToMove = null;
+
+    private GameObject Duplicate()
+    {
+        return GameObject.Instantiate(gameObject);
+    }
+
     public void OnPointerClicked(MixedRealityPointerEventData eventData)
     {
     }
 
     public void OnPointerDown(MixedRealityPointerEventData eventData)
     {
+        objectToMove = gameObject;
+
         // store the collection
-        initialCollection = gameObject.transform.parent;
+        initialCollection = objectToMove.transform.parent;
+
+        // check if part of the model
+        isPartOfGraphController = initialCollection.GetComponent<GraphController>() != null ? true : false;
+
+        if (isPartOfGraphController)
+        {
+            objectToMove = Duplicate();
+        }
 
         // detach from the collection
-        gameObject.transform.parent = null;
+        objectToMove.transform.parent = null;
     }
 
     public void OnPointerDragged(MixedRealityPointerEventData eventData)
     {
-        // follow the position and rotation of the pointer during dragging
-        gameObject.transform.position = eventData.Pointer.Position;
-        gameObject.transform.rotation = eventData.Pointer.Rotation;
+        if (objectToMove != null)
+        {
+            // follow the position and rotation of the pointer during dragging
+            objectToMove.transform.position = eventData.Pointer.Position;
+            objectToMove.transform.rotation = eventData.Pointer.Rotation;
+        }
     } 
 
     public void OnPointerUp(MixedRealityPointerEventData eventData)
     {
-        // determine if there is a nearby collection
-        GridObjectCollection[] objects = initialCollection.parent.GetComponentsInChildren<GridObjectCollection>();
+        // get all the grid collections created in the scene
+        // parent = DraggableContainer or DraggableModel
+        // parent.parent = Containers
+        GridObjectCollection[] collections = initialCollection.parent.parent.GetComponentsInChildren<GridObjectCollection>();
 
+        // find closest collection
         float distance = 1f;
-        GameObject closedObject = null;
+        GameObject closestCollection = null;
         
-        foreach(GridObjectCollection obj in objects)
+        foreach(GridObjectCollection collection in collections)
         {
-            GameObject go = obj.gameObject; 
+            GameObject go = collection.gameObject; 
 
-            float dist = Vector3.Distance(go.transform.position, gameObject.transform.position);
+            float dist = Vector3.Distance(go.transform.position, objectToMove.transform.position);
             if (dist < distance)
             {
                 distance = dist;
-                closedObject = go;
+                closestCollection = go;
             }
         }
 
         // update the parent to the closest collection 
-        if (closedObject != null)
+        if (closestCollection != null)
         {
-            gameObject.transform.parent = closedObject.transform;
+            // set the closest collection as parent
+            objectToMove.transform.parent = closestCollection.transform;
+
+            // update the closest collection
+            GridObjectCollection goc = closestCollection.GetComponent<GridObjectCollection>();
+            goc.UpdateCollection();
+
+            if (!isPartOfGraphController)
+            {
+                // update the initial collection when no model
+                GridObjectCollection gocInitial = initialCollection.GetComponent<GridObjectCollection>();
+                gocInitial.UpdateCollection();
+            }
+
         }
         else
         {
-            gameObject.transform.parent = initialCollection;
-        }
+            if (isPartOfGraphController)
+            {
+                // remove duplicated item since no closest collection was found
+                GameObject.Destroy(objectToMove);
+            }
+            else
+            {
+                // set back to the initial collection
+                objectToMove.transform.parent = initialCollection;
 
-        // update the collection it is attached to
-        GridObjectCollection goc = gameObject.transform.parent.GetComponent<GridObjectCollection>();
-        if (goc != null)
-        {
-            goc.UpdateCollection();
+                // update the initial collection
+                GridObjectCollection gocInitial = initialCollection.GetComponent<GridObjectCollection>();
+                gocInitial.UpdateCollection();
+            }
         }
     }
 

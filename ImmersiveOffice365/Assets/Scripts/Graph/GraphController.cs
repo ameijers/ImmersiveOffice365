@@ -37,6 +37,22 @@ public class GraphController : MonoBehaviour
         graphRenderer = new GraphRenderer(this, fdg);
     }
 
+    public void Reload()
+    {
+        gameObject.SetActive(true);
+
+        nodes.Clear();
+
+        foreach (Transform child in gameObject.transform)
+        {
+            GameObject.Destroy(child.gameObject);
+        }
+
+        Initialize();
+
+        model.LoadData();
+    }
+
     public GameObject CreateNode(string id = "")
     {
         // Create node in graph
@@ -100,7 +116,7 @@ public class GraphController : MonoBehaviour
 
         if (queue.GetFromQueue(out root, out refering))
         {
-            Node rootNode = nodes.ContainsKey(root.Id) ? nodes[root.Id] : null;
+            Node rootNode = root != null ? nodes.ContainsKey(root.Id) ? nodes[root.Id] : null : null;
             Node referingNode = refering != null ? nodes.ContainsKey(refering.Id) ? nodes[refering.Id] : null : null;
 
             if (root != null && rootNode == null)
