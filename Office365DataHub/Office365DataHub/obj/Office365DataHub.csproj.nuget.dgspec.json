@@ -1,25 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Github\\ImmersiveOffice365\\Office365DataHub\\Office365DataHub\\Office365DataHub.csproj": {}
+    "C:\\GitHub\\ImmersiveOffice365\\Office365DataHub\\Office365DataHub\\Office365DataHub.csproj": {}
   },
   "projects": {
-    "E:\\Github\\ImmersiveOffice365\\Office365DataHub\\Office365DataHub\\Office365DataHub.csproj": {
+    "C:\\GitHub\\ImmersiveOffice365\\Office365DataHub\\Office365DataHub\\Office365DataHub.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Github\\ImmersiveOffice365\\Office365DataHub\\Office365DataHub\\Office365DataHub.csproj",
+        "projectUniqueName": "C:\\GitHub\\ImmersiveOffice365\\Office365DataHub\\Office365DataHub\\Office365DataHub.csproj",
         "projectName": "Office365DataHub",
-        "projectPath": "E:\\Github\\ImmersiveOffice365\\Office365DataHub\\Office365DataHub\\Office365DataHub.csproj",
+        "projectPath": "C:\\GitHub\\ImmersiveOffice365\\Office365DataHub\\Office365DataHub\\Office365DataHub.csproj",
         "packagesPath": "C:\\Users\\AlexanderMeijers\\.nuget\\packages\\",
-        "outputPath": "E:\\Github\\ImmersiveOffice365\\Office365DataHub\\Office365DataHub\\obj\\",
+        "outputPath": "C:\\GitHub\\ImmersiveOffice365\\Office365DataHub\\Office365DataHub\\obj\\",
         "projectStyle": "PackageReference",
         "skipContentFileWrite": true,
         "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
           "C:\\Program Files (x86)\\Microsoft SDKs\\UWPNuGetPackages\\"
         ],
         "configFilePaths": [
           "C:\\Users\\AlexanderMeijers\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "uap10.0.17763"

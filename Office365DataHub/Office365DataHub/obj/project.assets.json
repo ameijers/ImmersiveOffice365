@@ -14567,7 +14567,7 @@
       ]
     },
     "Microsoft.NETCore.Platforms/2.1.0": {
-      "sha512": "GmkKfoyerqmsHMn7OZj0AKpcBabD+GaafqphvX2Mw406IwiJRy1pKcKqdCfKJfYmkRyJ6+e+RaUylgdJoDa1jQ==",
+      "sha512": "ok+RPAtESz/9MUXeIEz6Lv5XAGQsaNmEYXMsgVALj4D7kqC8gveKWXWXbufLySR2fWrwZf8smyN5RmHu0e4BHA==",
       "type": "package",
       "path": "microsoft.netcore.platforms/2.1.0",
       "files": [
@@ -14928,7 +14928,7 @@
       ]
     },
     "NETStandard.Library/2.0.3": {
-      "sha512": "548M6mnBSJWxsIlkQHfbzoYxpiYFXZZSL00p4GHYv8PkiqFBnnT68mW5mGEsA/ch9fDO9GkPgkFQpWiXZN7mAQ==",
+      "sha512": "st47PosZSHrjECdjeIzZQbzivYBJFv6P2nv4cj2ypdI204DO+vZ7l5raGMiX4eXMJ53RfOIg+/s4DHVZ54Nu2A==",
       "type": "package",
       "path": "netstandard.library/2.0.3",
       "files": [
@@ -22920,24 +22920,27 @@
   },
   "packageFolders": {
     "C:\\Users\\AlexanderMeijers\\.nuget\\packages\\": {},
+    "C:\\Microsoft\\Xamarin\\NuGet\\": {},
     "C:\\Program Files (x86)\\Microsoft SDKs\\UWPNuGetPackages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Github\\ImmersiveOffice365\\Office365DataHub\\Office365DataHub\\Office365DataHub.csproj",
+      "projectUniqueName": "C:\\GitHub\\ImmersiveOffice365\\Office365DataHub\\Office365DataHub\\Office365DataHub.csproj",
       "projectName": "Office365DataHub",
-      "projectPath": "E:\\Github\\ImmersiveOffice365\\Office365DataHub\\Office365DataHub\\Office365DataHub.csproj",
+      "projectPath": "C:\\GitHub\\ImmersiveOffice365\\Office365DataHub\\Office365DataHub\\Office365DataHub.csproj",
       "packagesPath": "C:\\Users\\AlexanderMeijers\\.nuget\\packages\\",
-      "outputPath": "E:\\Github\\ImmersiveOffice365\\Office365DataHub\\Office365DataHub\\obj\\",
+      "outputPath": "C:\\GitHub\\ImmersiveOffice365\\Office365DataHub\\Office365DataHub\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [
+        "C:\\Microsoft\\Xamarin\\NuGet\\",
         "C:\\Program Files (x86)\\Microsoft SDKs\\UWPNuGetPackages\\"
       ],
       "configFilePaths": [
         "C:\\Users\\AlexanderMeijers\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
         "uap10.0.17763"
