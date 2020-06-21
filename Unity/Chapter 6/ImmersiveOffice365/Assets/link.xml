@@ -1,0 +1,17 @@
+﻿<linker>
+  <!--
+  exclude assemblies from being stripped
+  -->
+  <assembly fullname="Microsoft.Graph.Core" preserve="all"/>
+  <assembly fullname="Microsoft.Identity.Client" preserve="all"/>
+  <assembly fullname="Newtonsoft.Json" preserve="all"/>
+  <assembly fullname="Microsoft.Graph" preserve="all"/>
+  
+  <assembly fullname="System.Core">
+    <type fullname="System.Linq.Expressions.Interpreter.LightLambda" preserve="all" />
+  </assembly>
+
+  <!--Preserve all types in a namespace-
+  <type fullname="Microsoft.Graph.DerivedTypeConverter" preserve="all" />
+  -->
+</linker>

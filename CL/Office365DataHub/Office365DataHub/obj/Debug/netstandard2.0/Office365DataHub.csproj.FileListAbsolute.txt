@@ -1,9 +1,0 @@
-E:\Github\ImmersiveOffice365\CL\Office365DataHub\Office365DataHub\bin\Debug\netstandard2.0\Office365DataHub.deps.json
-E:\Github\ImmersiveOffice365\CL\Office365DataHub\Office365DataHub\bin\Debug\netstandard2.0\Office365DataHub.dll
-E:\Github\ImmersiveOffice365\CL\Office365DataHub\Office365DataHub\bin\Debug\netstandard2.0\Office365DataHub.pdb
-E:\Github\ImmersiveOffice365\CL\Office365DataHub\Office365DataHub\obj\Debug\netstandard2.0\Office365DataHub.csproj.CoreCompileInputs.cache
-E:\Github\ImmersiveOffice365\CL\Office365DataHub\Office365DataHub\obj\Debug\netstandard2.0\Office365DataHub.AssemblyInfoInputs.cache
-E:\Github\ImmersiveOffice365\CL\Office365DataHub\Office365DataHub\obj\Debug\netstandard2.0\Office365DataHub.AssemblyInfo.cs
-E:\Github\ImmersiveOffice365\CL\Office365DataHub\Office365DataHub\obj\Debug\netstandard2.0\Office365DataHub.dll
-E:\Github\ImmersiveOffice365\CL\Office365DataHub\Office365DataHub\obj\Debug\netstandard2.0\Office365DataHub.pdb
-E:\Github\ImmersiveOffice365\CL\Office365DataHub\Office365DataHub\obj\Debug\netstandard2.0\Office365DataHub.csprojAssemblyReference.cache
