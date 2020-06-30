@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Office365DataHub", "Office3
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Office365DataHubTestApp", "..\Office365DataHubTestApp\Office365DataHubTestApp.csproj", "{0C8C6F57-717C-4D0D-841D-8EF112804351}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Office365ConsoleApp", "..\Office365ConsoleApp\Office365ConsoleApp.csproj", "{7E30F249-23B2-4580-B344-45F33C2F22C0}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,6 +42,8 @@ Global
 		{A27797AE-2067-4CEE-85B3-9F5A3E28A807}.Release|x86.ActiveCfg = Release|x86
 		{A27797AE-2067-4CEE-85B3-9F5A3E28A807}.Release|x86.Build.0 = Release|x86
 		{0C8C6F57-717C-4D0D-841D-8EF112804351}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{0C8C6F57-717C-4D0D-841D-8EF112804351}.Debug|Any CPU.Build.0 = Debug|x86
+		{0C8C6F57-717C-4D0D-841D-8EF112804351}.Debug|Any CPU.Deploy.0 = Debug|x86
 		{0C8C6F57-717C-4D0D-841D-8EF112804351}.Debug|ARM.ActiveCfg = Debug|ARM
 		{0C8C6F57-717C-4D0D-841D-8EF112804351}.Debug|ARM.Build.0 = Debug|ARM
 		{0C8C6F57-717C-4D0D-841D-8EF112804351}.Debug|ARM.Deploy.0 = Debug|ARM
@@ -69,26 +69,6 @@ Global
 		{0C8C6F57-717C-4D0D-841D-8EF112804351}.Release|x86.ActiveCfg = Release|x86
 		{0C8C6F57-717C-4D0D-841D-8EF112804351}.Release|x86.Build.0 = Release|x86
 		{0C8C6F57-717C-4D0D-841D-8EF112804351}.Release|x86.Deploy.0 = Release|x86
-		{7E30F249-23B2-4580-B344-45F33C2F22C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7E30F249-23B2-4580-B344-45F33C2F22C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7E30F249-23B2-4580-B344-45F33C2F22C0}.Debug|ARM.ActiveCfg = Debug|Any CPU
-		{7E30F249-23B2-4580-B344-45F33C2F22C0}.Debug|ARM.Build.0 = Debug|Any CPU
-		{7E30F249-23B2-4580-B344-45F33C2F22C0}.Debug|ARM64.ActiveCfg = Debug|Any CPU
-		{7E30F249-23B2-4580-B344-45F33C2F22C0}.Debug|ARM64.Build.0 = Debug|Any CPU
-		{7E30F249-23B2-4580-B344-45F33C2F22C0}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{7E30F249-23B2-4580-B344-45F33C2F22C0}.Debug|x64.Build.0 = Debug|Any CPU
-		{7E30F249-23B2-4580-B344-45F33C2F22C0}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{7E30F249-23B2-4580-B344-45F33C2F22C0}.Debug|x86.Build.0 = Debug|Any CPU
-		{7E30F249-23B2-4580-B344-45F33C2F22C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7E30F249-23B2-4580-B344-45F33C2F22C0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7E30F249-23B2-4580-B344-45F33C2F22C0}.Release|ARM.ActiveCfg = Release|Any CPU
-		{7E30F249-23B2-4580-B344-45F33C2F22C0}.Release|ARM.Build.0 = Release|Any CPU
-		{7E30F249-23B2-4580-B344-45F33C2F22C0}.Release|ARM64.ActiveCfg = Release|Any CPU
-		{7E30F249-23B2-4580-B344-45F33C2F22C0}.Release|ARM64.Build.0 = Release|Any CPU
-		{7E30F249-23B2-4580-B344-45F33C2F22C0}.Release|x64.ActiveCfg = Release|Any CPU
-		{7E30F249-23B2-4580-B344-45F33C2F22C0}.Release|x64.Build.0 = Release|Any CPU
-		{7E30F249-23B2-4580-B344-45F33C2F22C0}.Release|x86.ActiveCfg = Release|Any CPU
-		{7E30F249-23B2-4580-B344-45F33C2F22C0}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
