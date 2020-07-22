@@ -4,7 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
-using Windows.Foundation;
 using System.Linq;
 using Office365DataHub.Data;
 
@@ -20,8 +19,8 @@ namespace Office365DataHub.Services
 
         public void AddTeamMember(TeamMemberRequest request, OnAddTeamMemberCompleted onAddTeamMemberCompleted)
         {
-            IAsyncAction asyncAction = Windows.System.Threading.ThreadPool.RunAsync(
-                async (workItem) => { await AddTeamMemberAsync(request, onAddTeamMemberCompleted); });
+            System.Threading.Tasks.Task.Run(
+                () => AddTeamMemberAsync(request, onAddTeamMemberCompleted) );
         }
 
         public async Task AddTeamMemberAsync(TeamMemberRequest request, OnAddTeamMemberCompleted onAddTeamMemberCompleted)
@@ -61,8 +60,8 @@ namespace Office365DataHub.Services
 
         public void GetTeamMembers(TeamMembersDataRequest request, OnGetTeamMembersCompleted onGetTeamMembersCompleted)
         {
-            IAsyncAction asyncAction = Windows.System.Threading.ThreadPool.RunAsync(
-                async (workItem) => { await GetTeamMembersAsync(request, onGetTeamMembersCompleted); });
+            System.Threading.Tasks.Task.Run(
+                () => GetTeamMembersAsync(request, onGetTeamMembersCompleted) );
         }
 
         public async Task GetTeamMembersAsync(TeamMembersDataRequest request, OnGetTeamMembersCompleted onGetTeamMembersCompleted)
@@ -100,8 +99,8 @@ namespace Office365DataHub.Services
 
         public void GetJoinedTeams(TeamDataRequest request, OnGetTeamsCompleted onGetTeamsCompleted)
         {
-            IAsyncAction asyncAction = Windows.System.Threading.ThreadPool.RunAsync(
-                async (workItem) => { await GetJoinedTeamsAsync(request, onGetTeamsCompleted); });
+            System.Threading.Tasks.Task.Run(
+                () => GetJoinedTeamsAsync(request, onGetTeamsCompleted) );
         }
 
         public async Task GetJoinedTeamsAsync(TeamDataRequest request, OnGetTeamsCompleted onGetTeamsCompleted)
@@ -119,8 +118,8 @@ namespace Office365DataHub.Services
                     request.teams.Add(new TeamEntity
                     {
                         Id = team.Id,
-                        DisplayName = team.PrimaryChannel.DisplayName,
-                        Description = team.PrimaryChannel.Description,
+                        //DisplayName = team.DisplayName,
+                        //Description = team.Description,
                         IsArchived = team.IsArchived
 
                     });
@@ -132,8 +131,8 @@ namespace Office365DataHub.Services
 
         public void GetTeam(string teamId, OnGetTeamCompleted onGetTeamCompleted)
         {
-            IAsyncAction asyncAction = Windows.System.Threading.ThreadPool.RunAsync(
-                async (workItem) => { await GetTeamAsync(teamId, onGetTeamCompleted); });
+            System.Threading.Tasks.Task.Run(
+                () => GetTeamAsync(teamId, onGetTeamCompleted) );
         }
 
         public async Task GetTeamAsync(string teamId, OnGetTeamCompleted onGetTeamCompleted)

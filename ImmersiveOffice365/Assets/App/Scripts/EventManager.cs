@@ -11,9 +11,8 @@ public class IDEvent : UnityEvent<int>
 
 public class EventManager : MonoBehaviour
 {
-    public UnityEvent actionEvent;
-
     public IDEvent idEvent;
+
     public EventManager()
     {
     }

@@ -4,7 +4,6 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-using Windows.Foundation;
 
 namespace Office365DataHub
 {
@@ -14,8 +13,8 @@ namespace Office365DataHub
 
         public void GetSomeInformation(string url, OnGetSomeInformationCompleted onGetSomeInformationCompleted)
         {
-            IAsyncAction asyncAction = Windows.System.Threading.ThreadPool.RunAsync(
-                async (workItem) => { await GetSomeInformationAsync(url, onGetSomeInformationCompleted); });
+            System.Threading.Tasks.Task.Run(
+                () => GetSomeInformationAsync(url, onGetSomeInformationCompleted) );
         }
 
         public async Task GetSomeInformationAsync(string url, OnGetSomeInformationCompleted onGetSomeInformationCompleted)

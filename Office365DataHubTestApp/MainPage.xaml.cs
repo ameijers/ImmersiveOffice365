@@ -112,12 +112,11 @@ namespace Office365DataHubTestApp
         }
 
         void OnGetRelatedPeople(RelatedPeopleRequest request)
-        { 
-            foreach(PersonEntity person in request.relatedPeople)
+        {
+            foreach (PersonEntity person in request.relatedPeople)
             {
                 Debug.WriteLine(string.Format("Person {0} is related to Person {1}", person.FullName, request.person.FullName));
             }
         }
-
     }
 }

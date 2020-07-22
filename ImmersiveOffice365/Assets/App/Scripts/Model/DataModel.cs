@@ -82,10 +82,10 @@ public class DataModel : IDataModel
     {
         InitializeConnection();
 
-//#if UNITY_EDITOR
+#if UNITY_EDITOR
         CreateSampleData();
-//#else
-//        Office365DataHub.Services.PeopleService.Instance.GetCurrentUser(OnGetPersonCompleted);
-//#endif
+#else
+        Office365DataHub.Services.PeopleService.Instance.GetCurrentUser(OnGetPersonCompleted);
+#endif
     }
 }

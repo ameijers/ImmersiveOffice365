@@ -7,15 +7,15 @@
   IgnorableNamespaces="uap mp">
 
   <Identity
-    Name="1d9ac0da-d9b7-45b9-846f-b4e4e5c011bb"
-    Publisher="CN=Meijers"
+    Name="45f75ee9-c44f-4889-bb9c-66fbcd527ed3"
+    Publisher="CN=AlexanderMeijers"
     Version="1.0.0.0" />
 
-  <mp:PhoneIdentity PhoneProductId="1d9ac0da-d9b7-45b9-846f-b4e4e5c011bb" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+  <mp:PhoneIdentity PhoneProductId="45f75ee9-c44f-4889-bb9c-66fbcd527ed3" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
     <DisplayName>Office365DataHubTestApp</DisplayName>
-    <PublisherDisplayName>Meijers</PublisherDisplayName>
+    <PublisherDisplayName>AlexanderMeijers</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
 

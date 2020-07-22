@@ -15,14 +15,14 @@ namespace Office365DataHub
         public string access_token = "";
     }
 
-public class Authentication
-{
-    public string ClientId;
-    public string ClientSecret;
-    public string TenantId;
+    public class Authentication
+    {
+        public string ClientId;
+        public string ClientSecret;
+        public string TenantId;
 
-    public string[] Scopes;
-}
+        public string[] Scopes;
+    }
 
     public class AuthenticationHelper
     {

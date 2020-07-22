@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using Windows.Foundation;
 
 namespace Office365DataHub.Services
 {
@@ -19,14 +18,14 @@ namespace Office365DataHub.Services
 
         public void GetCurrentUser(OnGetPersonCompleted onGetPersonCompleted)
         {
-            IAsyncAction asyncAction = Windows.System.Threading.ThreadPool.RunAsync(
-                async (workItem) => { await GetPersonAsync(new Entities.PersonRequest(), onGetPersonCompleted); });
+            System.Threading.Tasks.Task.Run(
+                () => GetPersonAsync(new Entities.PersonRequest(), onGetPersonCompleted));
         }
 
         public void GetPerson(Entities.PersonRequest request, OnGetPersonCompleted onGetPersonCompleted)
         {
-            IAsyncAction asyncAction = Windows.System.Threading.ThreadPool.RunAsync(
-                async (workItem) => { await GetPersonAsync(request, onGetPersonCompleted); });
+            System.Threading.Tasks.Task.Run(
+                () => GetPersonAsync(request, onGetPersonCompleted));
         }
 
         public async Task GetPersonAsync(Entities.PersonRequest request, OnGetPersonCompleted onGetPersonCompleted)
@@ -45,6 +44,12 @@ namespace Office365DataHub.Services
                 try
                 {
                     User user = request.id == "" ? await graphClient.Me.Request().GetAsync() : await graphClient.Users[request.id].Request().GetAsync();
+
+                    // CHANGED
+                    if (request.id == "")
+                    {
+                        request.id = user.Id;
+                    }
 
                     request.person = new PersonEntity()
                     {
@@ -72,8 +77,8 @@ namespace Office365DataHub.Services
 
         public void GetPhoto(string userId, OnGetPhotoCompleted onGetPhotoCompleted)
         {
-            IAsyncAction asyncAction = Windows.System.Threading.ThreadPool.RunAsync(
-                async (workItem) => { await GetPhotoAsync(userId, onGetPhotoCompleted); });
+            System.Threading.Tasks.Task.Run(
+                () => GetPhotoAsync(userId, onGetPhotoCompleted));
         }
 
         public async Task GetPhotoAsync(string userId, OnGetPhotoCompleted onGetPhotoCompleted)
@@ -114,8 +119,8 @@ namespace Office365DataHub.Services
 
         public void GetRelatedPeople(RelatedPeopleRequest request, OnGetRelatedPersonCompleted onGetRelatedPersonCompleted, OnGetRelatedPeopleCompleted onGetRelatedPeopleCompleted)
         {
-            IAsyncAction asyncAction = Windows.System.Threading.ThreadPool.RunAsync(
-                async (workItem) => { await GetRelatedPeopleASync(request, onGetRelatedPersonCompleted, onGetRelatedPeopleCompleted); });
+            System.Threading.Tasks.Task.Run(
+                () => GetRelatedPeopleASync(request, onGetRelatedPersonCompleted, onGetRelatedPeopleCompleted) );
         }
 
         public async Task GetRelatedPeopleASync(RelatedPeopleRequest request, OnGetRelatedPersonCompleted onGetRelatedPersonCompleted, OnGetRelatedPeopleCompleted onGetRelatedPeopleCompleted)
@@ -124,18 +129,23 @@ namespace Office365DataHub.Services
 
             var graphClient = AuthenticationHelper.Instance.GetAuthenticatedClient();
 
+            // CHANGED
+            // require a filter
+            // https://graph.microsoft.com/v1.0/me/people/?$filter=personType/class eq 'Person' and personType/subclass eq 'OrganizationUser'
+            string filter = "personType/class eq 'Person' and personType/subclass eq 'OrganizationUser'";
+
             if (graphClient != null)
             {
                 if (request.person.Id == "")
                 {
-                    IUserPeopleCollectionPage people = await graphClient.Me.People.Request().GetAsync();
+                    IUserPeopleCollectionPage people = await graphClient.Me.People.Request().Filter(filter).GetAsync();
                     persons.AddRange(people);
                 }
                 else
                 {
                     try
                     { 
-                        IUserPeopleCollectionPage people = await graphClient.Users[request.person.Id].People.Request().GetAsync();
+                        IUserPeopleCollectionPage people = await graphClient.Users[request.person.Id].People.Request().Filter(filter).GetAsync();
                         persons.AddRange(people);
                     }
                     catch (Exception)
