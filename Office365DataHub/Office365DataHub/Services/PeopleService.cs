@@ -45,7 +45,6 @@ namespace Office365DataHub.Services
                 {
                     User user = request.id == "" ? await graphClient.Me.Request().GetAsync() : await graphClient.Users[request.id].Request().GetAsync();
 
-                    // CHANGED
                     if (request.id == "")
                     {
                         request.id = user.Id;
@@ -129,9 +128,6 @@ namespace Office365DataHub.Services
 
             var graphClient = AuthenticationHelper.Instance.GetAuthenticatedClient();
 
-            // CHANGED
-            // require a filter
-            // https://graph.microsoft.com/v1.0/me/people/?$filter=personType/class eq 'Person' and personType/subclass eq 'OrganizationUser'
             string filter = "personType/class eq 'Person' and personType/subclass eq 'OrganizationUser'";
 
             if (graphClient != null)

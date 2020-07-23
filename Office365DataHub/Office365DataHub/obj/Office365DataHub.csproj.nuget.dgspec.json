@@ -40,11 +40,11 @@
           "dependencies": {
             "Microsoft.Graph": {
               "target": "Package",
-              "version": "[1.21.0, )"
+              "version": "[3.8.0, )"
             },
             "Microsoft.Identity.Client": {
               "target": "Package",
-              "version": "[3.0.8, )"
+              "version": "[4.16.1, )"
             },
             "NETStandard.Library": {
               "suppressParent": "All",

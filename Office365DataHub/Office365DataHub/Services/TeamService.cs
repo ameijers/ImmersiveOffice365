@@ -118,8 +118,8 @@ namespace Office365DataHub.Services
                     request.teams.Add(new TeamEntity
                     {
                         Id = team.Id,
-                        DisplayName = team.DisplayName,
-                        Description = team.Description,
+                        DisplayName = team.PrimaryChannel != null ? team.PrimaryChannel.DisplayName : "Undefined",
+                        Description = team.PrimaryChannel != null ? team.PrimaryChannel.Description : "",
                         IsArchived = team.IsArchived
 
                     });
