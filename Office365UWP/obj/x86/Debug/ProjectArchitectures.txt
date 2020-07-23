@@ -1,1 +1,0 @@
-C:\GitHub\ImmersiveOffice365\Office365UWP\Office365UWP.csproj;x86
